@@ -3,15 +3,62 @@ import hljs from 'highlight.js'
 import CopyCode from './CopyCode.vue'
 import { computed } from 'vue'
 import TypeShow from './TypeShow.vue'
-const a = 1
-let containerWidth = 100
-const top = 0
-const left = 0
-const scrollStyleBool = true
-const font_size = 18
-const read_only = false
-const languageClass = 'hljs language-javascript'
-const value = `import CodeEditor from 'simple-code-editor111111111111111111111111111111111111111111111'
+const props = defineProps({
+  copy: {
+    type: Boolean,
+    default: true,
+  },
+  nameShow: {
+    type: Boolean,
+    default: true,
+  },
+  langName: {
+    type: String,
+    // default: '',
+  },
+  lang: {
+    type: String,
+    default: 'javascript',
+    requied: true,
+  },
+  theme: {
+    type: String,
+    default: 'dark',
+  },
+  width: {
+    type: String,
+    default: '620px',
+  },
+  height: {
+    type: String,
+    default: '',
+  },
+  maxwidth: {
+    type: String,
+    default: '',
+  },
+  maxHeight: {
+    type: String,
+    default: '',
+  },
+  scrollStyleBool: {
+    type: Boolean,
+    default: true,
+  },
+  codeValue: {
+    type: String,
+    // requied: true,
+    default: ''
+  },
+  fontSize: {
+    type: Number,
+    default: 18
+  }
+})
+const langName = props.langName || props.lang
+const font_size = props.fontSize
+const languageClass = 'hljs language-'+props.lang
+const value = `import CodeEditor from 'simple-code-editor'
 export default {
     components: {
       CodeEditor
@@ -22,8 +69,7 @@ export default {
         }
     }
 }`
-const htmlJs = 'JS'
-const theme = 'dark'
+// const theme = 'dark'
 const vHighlight = {
   bind(el, binding) {
     el.textContent = binding.value
@@ -47,31 +93,32 @@ const vHighlight = {
 const contentValue = computed(() => {
   return value
 })
-
+console.log(props.theme, 'props.theme')
 const border_radius = '12px'
 const withoutHeader = true
+
 </script>
 <template>
   <div
     class="code hljs"
     :class="{
-      atom_one_dark: theme == 'dark',
-      atom_one_light: theme == 'light',
+      atom_one_dark: props.theme == 'dark',
+      atom_one_light: props.theme == 'light',
     }"
     :style="{
-      width: '540px',
-      height: '240px',
+      width: props.width,
+      height: props.height,
       borderRadius: '10px',
-      zIndex: '600',
-      maxWidth: '540px',
-      minWidth: '540px',
-      maxHeight: '240px',
-      minHeight: '240px',
+      zIndex: '700',
+      maxWidth: props.maxwidth,
+      // minWidth: '540px',
+      maxHeight: props.maxHeight,
+      // minHeight: '240px',
     }"
   >
     <div class="code_header">
-      <TypeShow :TL="htmlJs"></TypeShow>
-      <CopyCode></CopyCode>
+      <TypeShow v-if="nameShow" :TL="langName"></TypeShow>
+      <CopyCode v-if="copy" :codeValue="props.codeValue"></CopyCode>
     </div>
     <div
       class="code_area"
@@ -81,15 +128,14 @@ const withoutHeader = true
         borderTopLeftRadius: withoutHeader == true ? border_radius : 0,
         borderTopRightRadius: withoutHeader == true ? border_radius : 0,
       }"
-      :class="{ srollbar_style: scrollStyleBool === true }"
+      :class="{ srollbar_style: props.scrollStyleBool === true }"
     >
       <pre
-        :style="{ width: containerWidth === 0 ? '' : containerWidth + 'px' }"
       >
       <code
         v-highlight="contentValue"
         :class="languageClass"
-        :style="{ top: top + 'px', left: left + 'px', fontSize: font_size, borderBottomLeftRadius: read_only == true ? border_radius : 0, borderBottomRightRadius: read_only == true ? border_radius : 0 }"
+        :style="{ fontSize: font_size }"
       ></code>
       </pre>
     </div>

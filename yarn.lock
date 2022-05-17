@@ -598,6 +598,23 @@ vite@^2.9.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
+vue-highlight-code@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/vue-highlight-code/-/vue-highlight-code-0.0.1.tgz#c9144bca640c67fa69d3995f186f0991155e7c32"
+  integrity sha512-neL6lqPvRTzs7Cb6qulB3M+8o18PaGDXg2oiSVTjR7TmRz6PY5056AkF/MHdfHplOsRGWq/ggXwtxtYDGhG58g==
+  dependencies:
+    highlight.js "^11.5.1"
+    vue "^3.2.25"
+
+vue-highlight-code@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/vue-highlight-code/-/vue-highlight-code-0.0.2.tgz#701ead3d331cd8401f53dc4743aeb515571200ed"
+  integrity sha512-7ILn6GX0j8tx0LYRjeaxnYGQHRAsbMzWdDyocvVyIeMWITs7l+OizqokJG5hZLTV4uxGEELWpo7rtY91xTOmpA==
+  dependencies:
+    highlight.js "^11.5.1"
+    vue "^3.2.25"
+    vue-highlight-code "^0.0.1"
+
 vue@^3.2.25:
   version "3.2.33"
   resolved "https://registry.npmmirror.com/vue/-/vue-3.2.33.tgz#7867eb16a3293a28c4d190a837bc447878bd64c2"

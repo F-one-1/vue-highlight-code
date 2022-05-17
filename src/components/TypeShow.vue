@@ -27,7 +27,7 @@ const props = defineProps({
     height: 20px;
     text-align: center;
     color: rgb(170, 170, 170);
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 // .TL {

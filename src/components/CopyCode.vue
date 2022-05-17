@@ -1,26 +1,26 @@
 <script setup>
 import { ref } from 'vue'
-
-let copyjudge = 'false'
 let Tips = ref('copy ?')
 let text = ref('copy')
-
 const resetMessage = () => {
   text.value = 'copy'
 }
-
+const props = defineProps({
+  codeValue: {
+    type: String,
+    default: 'console.log(',
+    required: true,
+  }
+})
 const copy = (event) => {
   getContent()
   event.target.focus()
   text.value = 'copied'
-  // text.value = 'yes'
-  // setTimeout(() => {
-  //   Tips.value = 'copy ?'
-  // }, 2000)
 }
 const textarea = ref(null)
 const getContent = () => {
   let textArea = textarea.value
+  console.log(textArea,'textArea')
   if (document.execCommand('copy') == true) {
     // older browser support
     let range, selection
@@ -38,15 +38,13 @@ const getContent = () => {
     navigator.clipboard.writeText(textArea.value)
   }
 }
-
-const content = 'console.log(1)'
 </script>
 
 <template>
   <!-- <input type="text" /> -->
   <div class="cb" tabindex="0" @focusout="resetMessage" @click="copy">
     <!-- <div class="cb_tooltip">{{ Tips }}</div> -->
-    <textarea ref="textarea" :value="content" tabindex="1" readonly></textarea>
+    <textarea ref="textarea" :value="props.codeValue" tabindex="1" readonly></textarea>
     <div class="cb_copy">{{ text }}</div>
     <!-- <div v-show='copyjudge' class="cb_copy">copied</div> -->
   </div>
