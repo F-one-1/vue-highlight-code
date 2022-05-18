@@ -1,7 +1,7 @@
 {
   "name": "vue-highlight-code",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.1.0",
   "license": "MIT",
   "main": "./dist/vue3-highlight.umd.js",
   "module": "./dist/vue3-highlight.es.js",
@@ -19,13 +19,24 @@
   },
   "dependencies": {
     "highlight.js": "^11.5.1",
-    "vue": "^3.2.25",
-    "vue-highlight-code": "^0.0.3"
+    "vue": "^3.2.25"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vite": "^2.9.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/F-one-1/vue-highlight-code.git"
+  },
+  "homepage": "https://github.com/F-one-1/vue-highlight-code",
+  "keywords": [
+    "highlight",
+    "vue3",
+    "component",
+    "vue",
+    "highlight.js"
+  ]
 }
