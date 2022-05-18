@@ -33,7 +33,7 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  maxwidth: {
+  maxWidth: {
     type: String,
     default: '',
   },
@@ -47,7 +47,7 @@ const props = defineProps({
   },
   codeValue: {
     type: String,
-    // requied: true,
+    requied: true,
     default: ''
   },
   fontSize: {
@@ -58,17 +58,6 @@ const props = defineProps({
 const langName = props.langName || props.lang
 const font_size = props.fontSize
 const languageClass = 'hljs language-'+props.lang
-const value = `import CodeEditor from 'simple-code-editor'
-export default {
-    components: {
-      CodeEditor
-    },
-    data() {
-        return {
-          value: ''
-        }
-    }
-}`
 // const theme = 'dark'
 const vHighlight = {
   bind(el, binding) {
@@ -90,10 +79,6 @@ const vHighlight = {
     hljs.highlightElement(el)
   },
 }
-const contentValue = computed(() => {
-  return value
-})
-console.log(props.theme, 'props.theme')
 const border_radius = '12px'
 const withoutHeader = true
 
@@ -133,7 +118,7 @@ const withoutHeader = true
       <pre
       >
       <code
-        v-highlight="contentValue"
+        v-highlight="props.codeValue"
         :class="languageClass"
         :style="{ fontSize: font_size }"
       ></code>

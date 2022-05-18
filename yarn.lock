@@ -615,6 +615,15 @@ vue-highlight-code@^0.0.2:
     vue "^3.2.25"
     vue-highlight-code "^0.0.1"
 
+vue-highlight-code@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/vue-highlight-code/-/vue-highlight-code-0.0.3.tgz#ad924131b7f8f7cfb7337b6db65165ec88597086"
+  integrity sha512-KV0JYNlfQ3fVJHUuRNvmEofwe76xfREtpABrjc6iGSz2z9i8HjcqrzYCILeryrbDOaQ7xV8KndBCZkQyxRsjfQ==
+  dependencies:
+    highlight.js "^11.5.1"
+    vue "^3.2.25"
+    vue-highlight-code "^0.0.2"
+
 vue@^3.2.25:
   version "3.2.33"
   resolved "https://registry.npmmirror.com/vue/-/vue-3.2.33.tgz#7867eb16a3293a28c4d190a837bc447878bd64c2"

@@ -4,23 +4,24 @@
 import HelloWorld from './components/HelloWorld.vue'
 import {HighCode} from 'vue-highlight-code'
 import 'vue-highlight-code/dist/style.css'
-const value = `import CodeEditor from 'simple-code-editor'
+const value = `import { HighCode } from 'vue-highlight-code';
+import 'vue-highlight-code/dist/style.css';
 export default {
     components: {
-      CodeEditor
+      HighCode
     },
-    data() {
-        return {
-          value: ''
-        }
+    data(){
+      
     }
 }`
 const light = 'light'
+const vue = 'vue'
+const dark = 'dark'
 </script>
 <template>
   <div class="wrapper">
-    <HighCode class="code" :codeValue="value" :theme="dark"></HighCode>
-    <HighCode class="code" :codeValue="value" :theme="light"></HighCode>
+    <HighCode class="code" :codeValue="value" :theme="dark" :lang="vue"></HighCode>
+    <HighCode class="code" :codeValue="value" :theme="light" :lang="vue"></HighCode>
   </div>
 </template>
 
