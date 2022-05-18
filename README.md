@@ -2,7 +2,9 @@
 
 Import the npm package and only one prop to show highlightCode
 
-
+```
+yarn add highlight.js vue-highlight-code
+```
 ## live demo
 
 [stackblitz](https://stackblitz.com/edit/github-flf8ku?file=README.md)
@@ -10,10 +12,10 @@ Import the npm package and only one prop to show highlightCode
 
 ### 1. use in Vue3 
 
-Install the `vue-highlight-code` package from NPM:
+Install the `vue-highlight-code` package from NPM and `highlight.js`:
 
 ```
-yarn add vue-highlight-code
+yarn add highlight.js vue-highlight-code
 ```
 
 import the component and style
