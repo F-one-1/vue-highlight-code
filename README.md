@@ -1,7 +1,111 @@
-# Vue 3 + Vite
+## Highlight Code for Vue.js
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Import the npm package and only one prop to show highlightCode
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+## live demo
+
+[codeSandBox](https://codesandbox.io/s/festive-easley-wr4cd2?file=/src/App.vue)  
+
+
+
+### 1. use in Vue3 
+
+Install the `vue-highlight-code` package from NPM:
+
+```
+yarn add vue-highlight-code
+```
+
+import the component and style
+
+```vue
+import { HighCode } from 'vue-highlight-code';
+import 'vue-highlight-code/dist/style.css';
+export default {
+    components: {
+      HighCode
+    },
+}
+<HighCode></HighCoder>
+```
+
+
+
+### 2. Props
+
+#### codeValue `String`
+
+Description:  Highlight Code
+
+
+
+#### lang `String`
+
+default: 'javascript'    (such as 'vue','html','css')
+
+Description: Highlight Code Type
+
+
+
+#### theme `String`
+
+default: 'dark'     (only ['dark','light'])
+
+Description: Highlight Code theme
+
+
+
+#### langName `String`
+
+Description: Highlight Code Name (Upper left corner display)
+
+ 
+
+#### width `String`
+
+default: '620px'
+
+Description: the component width
+
+
+
+#### height `String`
+
+Description: the component height
+
+
+
+#### maxWidth `String`
+
+Description: the component max-width
+
+
+
+#### maxHeight `String`
+
+Description: the component max-height
+
+
+
+#### fontSize `Number`
+
+Description: the highlight code font-size
+
+
+
+#### scrollStyleBool `Boolean`
+
+default: true
+
+Description:  scroll bar style 
+
+
+
+#### copy `Boolean`
+
+default： true
+
+Description:  whether the code can copy
+
