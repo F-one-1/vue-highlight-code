@@ -18,7 +18,7 @@ yarn add vue-highlight-code
 
 import the component and style
 
-```vue
+```js
 import { HighCode } from 'vue-highlight-code';
 import 'vue-highlight-code/dist/style.css';
 export default {
@@ -26,6 +26,7 @@ export default {
       HighCode
     },
 }
+
 <HighCode></HighCoder>
 ```
 
