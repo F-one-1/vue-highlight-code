@@ -3,11 +3,9 @@
 Import the npm package and only one prop to show highlightCode
 
 
-
 ## live demo
 
-[codeSandBox](https://codesandbox.io/s/festive-easley-wr4cd2?file=/src/App.vue)  
-
+[stackblitz](https://stackblitz.com/edit/github-flf8ku?file=README.md)
 
 
 ### 1. use in Vue3 
