@@ -56,7 +56,11 @@ default: 'dark'     (only ['dark','light'])
 
 Description: Highlight Code theme
 
+#### codeLines `Boolean`
 
+default： false
+
+Description:  Support Code lines
 
 #### langName `String`
 
