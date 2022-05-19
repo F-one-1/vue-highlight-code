@@ -9,6 +9,7 @@ yarn add highlight.js vue-highlight-code
 
 [stackblitz](https://stackblitz.com/edit/github-flf8ku?file=README.md)
 
+![NXGUK Z% L$P EQCLJZ6TZY](https://user-images.githubusercontent.com/68687740/169360419-e2538e66-f45e-4e5b-82d5-144f280587ca.png)
 
 ### 1. use in Vue3 
 
