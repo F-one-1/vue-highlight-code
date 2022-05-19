@@ -3,6 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
 import HighCode from './components/HighCode.vue'
+// import textloader from './textLoader.js'
 // import 'vue-highlight-code/dist/style.css'
 const value = `import { HighCode } from 'vue-highlight-code';
 import 'vue-highlight-code/dist/style.css';
@@ -14,6 +15,8 @@ export default {
 
     }
 }`
+// const demoJS = textloader(import.meta.globEager("./demo.js"))
+// console.log(demoJS,'demoJS')
 const light = 'light'
 const vue = 'vue'
 const dark = 'dark'

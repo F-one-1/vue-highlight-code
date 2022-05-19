@@ -1,7 +1,7 @@
 <script setup>
 import hljs from 'highlight.js'
 import CopyCode from './CopyCode.vue'
-import { computed } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import TypeShow from './TypeShow.vue'
 const props = defineProps({
   copy: {
@@ -48,16 +48,20 @@ const props = defineProps({
   codeValue: {
     type: String,
     requied: true,
-    default: ''
+    default: '',
   },
   fontSize: {
     type: Number,
-    default: 18
-  }
+    default: 18,
+  },
+  codeLines: {
+    type: Boolean,
+    default: false,
+  },
 })
 const langName = props.langName || props.lang
 const font_size = props.fontSize
-const languageClass = 'hljs language-'+props.lang
+const languageClass = 'hljs language-' + props.lang
 // const theme = 'dark'
 const vHighlight = {
   bind(el, binding) {
@@ -73,15 +77,27 @@ const vHighlight = {
     el.textContent = binding.value
     hljs.highlightElement(el)
   },
-  updated(el, binding) {
-    // console.log(el, binding, '222')
-    el.textContent = binding.value
-    hljs.highlightElement(el)
-  },
+  // updated(el, binding) {
+  //   // console.log(el, binding, '222')
+  //   el.textContent = binding.value
+  //   hljs.highlightElement(el)
+  // },
 }
 const border_radius = '12px'
 const withoutHeader = true
 
+let arr = ref([])
+
+const codeArea = ref(null)
+nextTick(() => {
+  const preCodeHeightDemo = codeArea.value.offsetHeight
+  console.log(preCodeHeightDemo, 'preCodeHeight')
+  const count = Math.floor(preCodeHeightDemo / 24)
+  for (let i = 1; i <= count; i++) {
+    arr.value.push(i)
+  }
+  // console.log(arr,'arr')
+})
 </script>
 <template>
   <div
@@ -105,8 +121,24 @@ const withoutHeader = true
       <TypeShow v-if="nameShow" :TL="langName"></TypeShow>
       <CopyCode v-if="copy" :codeValue="props.codeValue"></CopyCode>
     </div>
+    <!-- <div class="code_area">
+      <div>1</div>
+    </div> -->
+    <div class="code_area_lines">
+      <div
+        :class="{
+          dark: props.theme === 'dark',
+          light: props.theme === 'light',
+        }"
+        v-for="cur in arr"
+        class="code_area_lines_item"
+      >
+        {{ cur }}
+      </div>
+    </div>
     <div
       class="code_area"
+      ref="codeArea"
       :style="{
         borderBottomLeftRadius: border_radius,
         borderBottomRightRadius: border_radius,
@@ -115,8 +147,7 @@ const withoutHeader = true
       }"
       :class="{ srollbar_style: props.scrollStyleBool === true }"
     >
-      <pre
-      >
+      <pre>
       <code
         v-highlight="props.codeValue"
         :class="languageClass"
@@ -140,8 +171,11 @@ const withoutHeader = true
     overflow: hidden;
     padding: 20px;
     padding-top: 0px;
+    padding-left: 24px;
     overflow: overlay;
     border-radius: 5px;
+    display: flex;
+
     &.srollbar_style::-webkit-scrollbar-track {
       background-color: #eee;
       // border-radius: 5px;
@@ -168,7 +202,7 @@ const withoutHeader = true
   pre code {
     // padding: 0px 20px 20px 20px;
     font-family: Consolas, Monaco, monospace;
-    line-height: 1.5;
+    line-height: 24px;
     font-size: 16px;
   }
 }
@@ -182,6 +216,35 @@ const withoutHeader = true
 }
 .wrapper-content::-webkit-scrollbar {
   width: 6px;
+}
+
+.code_area_lines {
+  display: flex;
+  flex-direction: column;
+  width: 10px;
+  // justify-content: center;
+  padding-top: 40px;
+  align-items: center;
+  position: absolute;
+  transform: translateX(6px);
+
+  &_item {
+    height: 24px;
+    width: 10px;
+    font-size: 12px;
+    color: #adb5bd;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.6;
+    &.dark {
+      color: #adb5bd;
+    }
+    &.light {
+      color: #212529;
+    }
+  }
 }
 </style>
 
