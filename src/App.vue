@@ -23,8 +23,19 @@ const dark = 'dark'
 </script>
 <template>
   <div class="wrapper">
-    <HighCode class="code" :codeValue="value" :theme="dark" :lang="vue"></HighCode>
-    <HighCode class="code" :codeValue="value" :theme="light" :lang="vue"></HighCode>
+    <HighCode
+      :codeLines="true"
+      class="code"
+      :codeValue="value"
+      :theme="dark"
+      :lang="vue"
+    ></HighCode>
+    <HighCode
+      class="code"
+      :codeValue="value"
+      :theme="light"
+      :lang="vue"
+    ></HighCode>
   </div>
 </template>
 

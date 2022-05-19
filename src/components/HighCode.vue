@@ -124,7 +124,7 @@ nextTick(() => {
     <!-- <div class="code_area">
       <div>1</div>
     </div> -->
-    <div class="code_area_lines">
+    <div class="code_area_lines" v-if="codeLines">
       <div
         :class="{
           dark: props.theme === 'dark',
