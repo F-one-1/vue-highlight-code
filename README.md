@@ -2,6 +2,19 @@
 
 Import the npm package and only one prop to show highlightCode
 
+[![vue 3](https://img.shields.io/badge/vue-3-42b983.svg?style=flat-square)](https://vuejs.org)
+
+<p>
+  <a href="https://npm-stat.com/charts.html?package=vue-highlight-code">
+    <img alt="Downloads" src="https://img.shields.io/npm/dm/vue-highlight-code.svg">
+  </a>
+  <a href="https://npmjs.com/package/vue-highlight-code">
+    <img alt="Version" src="https://img.shields.io/npm/v/vue-highlight-code.svg"/>
+  </a>
+  <a href="http://packagequality.com/#?package=vue-highlight-code">
+    <img alt="Quality" src="https://npm.packagequality.com/shield/vue-highlight-code.svg">
+  </a>
+</p>
 ```
 yarn add highlight.js vue-highlight-code
 ```
@@ -35,83 +48,20 @@ export default {
 
 
 
-### 2. Props
+### Component Props
 
-#### codeValue `String`
-
-Description:  Highlight Code
-
-
-
-#### lang `String`
-
-default: 'javascript'    (such as 'vue','html','css')
-
-Description: Highlight Code Type
-
-
-
-#### theme `String`
-
-default: 'dark'     (only ['dark','light'])
-
-Description: Highlight Code theme
-
-#### codeLines `Boolean`
-
-default： false
-
-Description:  Support Code lines
-
-#### langName `String`
-
-Description: Highlight Code Name (Upper left corner display)
-
- 
-
-#### width `String`
-
-default: '620px'
-
-Description: the component width
-
-
-
-#### height `String`
-
-Description: the component height
-
-
-
-#### maxWidth `String`
-
-Description: the component max-width
-
-
-
-#### maxHeight `String`
-
-Description: the component max-height
-
-
-
-#### fontSize `Number`
-
-Description: the highlight code font-size
-
-
-
-#### scrollStyleBool `Boolean`
-
-default: true
-
-Description:  scroll bar style 
-
-
-
-#### copy `Boolean`
-
-default： true
-
-Description:  whether the code can copy
+| prop            | description                                     | type      | default                                  |
+| :-------------- | :---------------------------------------------- | :-------- | :--------------------------------------- |
+| codeValue       | Highlight Code Source                           | `String`  | `''`                                     |
+| lang            | Highlight Code Type                             | `String`  | `javascript` (such as 'vue','html','css) |
+| theme           | Component Highlight Code theme                  | `String`  | default: `dark`(only ['dark','light'])   |
+| codeLines       | Show Code lines                                 | `Boolean` | `false`                                  |
+| langName        | Highlight Code Name (Upper left corner display) | `String`  | ``                                       |
+| width           | component style width                           | `String`  | `620px`                                  |
+| height          | component style height                          | `String`  | ``                                       |
+| maxWidth        | component style max-width                       | `String`  | ``                                       |
+| maxHight        | component style max-height`String`              | `String`  | ``                                       |
+| fontSize        | highlight code font-size                        | `Number`  | -                                        |
+| scrollStyleBool | component scroll bar style                      | `Boolean` | `true`                                   |
+| copy            | whether the code can copy                       | `Boolean` | `true`                                   |
 
