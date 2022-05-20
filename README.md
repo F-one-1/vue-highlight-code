@@ -15,9 +15,11 @@ Import the npm package and only one prop to show highlightCode
     <img alt="Quality" src="https://npm.packagequality.com/shield/vue-highlight-code.svg">
   </a>
 </p>
+
 ```
 yarn add highlight.js vue-highlight-code
 ```
+
 ## live demo
 
 [stackblitz](https://stackblitz.com/edit/github-flf8ku?file=README.md)

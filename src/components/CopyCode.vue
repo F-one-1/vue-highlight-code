@@ -10,7 +10,7 @@ const props = defineProps({
     type: String,
     default: 'console.log(',
     required: true,
-  }
+  },
 })
 const copy = (event) => {
   getContent()
@@ -20,14 +20,16 @@ const copy = (event) => {
 const textarea = ref(null)
 const getContent = () => {
   let textArea = textarea.value
-  console.log(textArea,'textArea')
+  console.log(textArea, 'textArea')
   if (document.execCommand('copy') == true) {
+    console.log('document.execCommandtrue')
     // older browser support
     let range, selection
     textArea.focus()
     textArea.select()
     range = document.createRange()
     range.selectNodeContents(textArea)
+    console.log(range, 'range')
     selection = window.getSelection()
     selection.removeAllRanges()
     selection.addRange(range)
@@ -35,7 +37,8 @@ const getContent = () => {
     document.execCommand('copy')
   } else {
     // modern browser support (using the clipboard API)
-    navigator.clipboard.writeText(textArea.value)
+    console.log('navigator.clipboard.writeText(textArea.value)')
+    navigator.clipboard.writeText(props.codeValue)
   }
 }
 </script>
@@ -44,7 +47,12 @@ const getContent = () => {
   <!-- <input type="text" /> -->
   <div class="cb" tabindex="0" @focusout="resetMessage" @click="copy">
     <!-- <div class="cb_tooltip">{{ Tips }}</div> -->
-    <textarea ref="textarea" :value="props.codeValue" tabindex="1" readonly></textarea>
+    <textarea
+      ref="textarea"
+      :value="props.codeValue"
+      tabindex="1"
+      readonly
+    ></textarea>
     <div class="cb_copy">{{ text }}</div>
     <!-- <div v-show='copyjudge' class="cb_copy">copied</div> -->
   </div>
