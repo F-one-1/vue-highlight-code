@@ -91,7 +91,6 @@ let arr = ref([])
 const codeArea = ref(null)
 nextTick(() => {
   const preCodeHeightDemo = codeArea.value.offsetHeight
-  console.log(preCodeHeightDemo, 'preCodeHeight')
   const count = Math.floor(preCodeHeightDemo / 24)
   for (let i = 1; i <= count; i++) {
     arr.value.push(i)
