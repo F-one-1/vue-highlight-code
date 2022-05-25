@@ -1,7 +1,7 @@
 {
   "name": "vue-highlight-code",
   "private": false,
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "main": "./dist/vue3-highlight.umd.js",
   "module": "./dist/vue3-highlight.es.js",
