@@ -9,8 +9,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/build.js'),
-      name: 'vue3-highlight',
-      fileName: (format) => `vue3-highlight.${format}.js`
+      name: 'vue-highlight-code',
+      fileName: (format) => `vue-highlight-code.${format}.js`
     },
     sourcemap: true,
     rollupOptions: {

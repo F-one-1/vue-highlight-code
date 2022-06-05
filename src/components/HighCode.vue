@@ -194,8 +194,8 @@ nextTick(() => {
   &_header {
     position: relative;
     display: flex;
-    justify-content: space-around;
-    height: 40px;
+    justify-content: flex-start;
+    height: 30px;
     width: 100%;
   }
   pre code {
@@ -222,7 +222,7 @@ nextTick(() => {
   flex-direction: column;
   width: 10px;
   // justify-content: center;
-  padding-top: 40px;
+  padding-top: 30px;
   align-items: center;
   position: absolute;
   transform: translateX(6px);

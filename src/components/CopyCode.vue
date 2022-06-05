@@ -65,7 +65,7 @@ const getContent = () => {
   cursor: pointer;
   transition: 0.3s opacity linear;
   opacity: 0.5;
-  height: 40px;
+  height: 30px;
   width: 80px;
   // float: right;
   right: 0px;

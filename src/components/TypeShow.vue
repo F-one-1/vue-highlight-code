@@ -19,9 +19,9 @@ const props = defineProps({
   align-items: center;
   justify-content: center;
   width: 40px;
-  height: 40px;
-  position: absolute;
-  left: 0px;
+  height: 30px;
+  position: relative;
+  // left: 0px;
   &_word {
     width: 20px;
     height: 20px;

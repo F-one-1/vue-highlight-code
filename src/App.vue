@@ -20,6 +20,7 @@ export default {
 const light = 'light'
 const vue = 'vue'
 const dark = 'dark'
+const height = '200px'
 </script>
 <template>
   <div class="wrapper">
@@ -29,6 +30,7 @@ const dark = 'dark'
       :codeValue="value"
       :theme="dark"
       :lang="vue"
+      :maxHeight="height"
     ></HighCode>
     <HighCode
       class="code"
