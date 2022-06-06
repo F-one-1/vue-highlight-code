@@ -1,17 +1,17 @@
 {
   "name": "vue-highlight-code",
   "private": false,
-  "version": "0.1.6",
+  "version": "0.1.8",
   "license": "MIT",
-  "main": "./dist/vue3-highlight.umd.js",
-  "module": "./dist/vue3-highlight.es.js",
+  "main": "./dist/vue-highlight-code.umd.js",
+  "module": "./dist/vue-highlight-code.es.js",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/vue3-highlight.es.js",
-      "require": "./dist/vue3-highlight.umd.js"
+      "import": "./dist/vue-highlight-code.es.js",
+      "require": "./dist/vue-highlight-code.umd.js"
     },
     "./dist/style.css": "./dist/style.css"
   },
@@ -28,7 +28,8 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "vite": "^2.9.9"
+    "vite": "^2.9.9",
+    "vue-highlight-code": "^0.1.7-1"
   },
   "repository": {
     "type": "git",

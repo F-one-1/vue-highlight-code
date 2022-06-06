@@ -2,7 +2,9 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 // import HelloWorld from './components/HelloWorld.vue'
-import HighCode from './components/HighCode.vue'
+// import HighCode from './components/HighCode.vue'
+import { HighCode } from 'vue-highlight-code'
+import 'vue-highlight-code/dist/style.css'
 // import textloader from './textLoader.js'
 // import 'vue-highlight-code/dist/style.css'
 const value = `import { HighCode } from 'vue-highlight-code';
@@ -25,7 +27,6 @@ const height = '200px'
 <template>
   <div class="wrapper">
     <HighCode
-      :codeLines="true"
       class="code"
       :codeValue="value"
       :theme="dark"
