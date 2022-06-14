@@ -28,13 +28,13 @@ const height = '200px'
       :theme="dark"
       :lang="vue"
       :maxHeight="height"
-      :codeLines="true"
     ></HighCode>
     <HighCode
       class="code"
       :codeValue="value"
       :theme="light"
       :lang="vue"
+      :codeLines="true"
     ></HighCode>
   </div>
 </template>
