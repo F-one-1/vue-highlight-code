@@ -88,10 +88,10 @@ const withoutHeader = true
 
 let arr = ref([])
 
-const codeArea = ref(null)
+const code = ref(null)
 nextTick(() => {
-  const preCodeHeightDemo = codeArea.value.offsetHeight
-  const count = Math.floor(preCodeHeightDemo / 24)
+  const preCodeHeightDemo = code.value.offsetHeight
+  const count = Math.ceil(preCodeHeightDemo / 24)
   for (let i = 1; i <= count; i++) {
     arr.value.push(i)
   }
@@ -123,18 +123,7 @@ nextTick(() => {
     <!-- <div class="code_area">
       <div>1</div>
     </div> -->
-    <div class="code_area_lines" v-if="codeLines">
-      <div
-        :class="{
-          dark: props.theme === 'dark',
-          light: props.theme === 'light',
-        }"
-        v-for="cur in arr"
-        class="code_area_lines_item"
-      >
-        {{ cur }}
-      </div>
-    </div>
+
     <div
       class="code_area"
       ref="codeArea"
@@ -146,12 +135,26 @@ nextTick(() => {
       }"
       :class="{ srollbar_style: props.scrollStyleBool === true }"
     >
+      <div class="code_area_lines" v-if="codeLines">
+        <div
+          :class="{
+            dark: props.theme === 'dark',
+            light: props.theme === 'light',
+          }"
+          v-for="cur in arr"
+          class="code_area_lines_item"
+        >
+          {{ cur }}
+        </div>
+      </div>
       <pre>
       <code
         v-highlight="props.codeValue"
         :class="languageClass"
+        ref="code"
         :style="{ fontSize: font_size }"
-      ></code>
+      >
+      </code>
       </pre>
     </div>
   </div>
@@ -174,7 +177,9 @@ nextTick(() => {
     overflow: overlay;
     border-radius: 5px;
     display: flex;
-
+    &_link {
+      position: absolute;
+    }
     &.srollbar_style::-webkit-scrollbar-track {
       background-color: #eee;
       // border-radius: 5px;
@@ -222,10 +227,10 @@ nextTick(() => {
   flex-direction: column;
   width: 10px;
   // justify-content: center;
-  padding-top: 30px;
+  // padding-top: 30px;
   align-items: center;
   position: absolute;
-  transform: translateX(6px);
+  transform: translateX(-18px);
 
   &_item {
     height: 24px;
