@@ -29,7 +29,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vite": "^2.9.9",
-    "vue-highlight-code": "^0.1.10"
+    "vue-highlight-code": "^0.1.9"
   },
   "repository": {
     "type": "git",
