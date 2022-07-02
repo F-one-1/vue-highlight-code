@@ -1,7 +1,7 @@
 <script setup>
 import HighCode from './components/HighCode.vue'
 // import { HighCode } from 'vue-highlight-code'
-import 'vue-highlight-code/dist/style.css'
+// import 'vue-highlight-code/dist/style.css'
 
 const value = `import { HighCode } from 'vue-highlight-code';
 import 'vue-highlight-code/dist/style.css';
@@ -19,6 +19,7 @@ const light = 'light'
 const vue = 'vue'
 const dark = 'dark'
 const height = '200px'
+const borderRadius = '0px'
 </script>
 <template>
   <div class="wrapper">
@@ -35,6 +36,7 @@ const height = '200px'
       :theme="light"
       :lang="vue"
       :codeLines="true"
+      :borderRadius="borderRadius"
     ></HighCode>
   </div>
 </template>

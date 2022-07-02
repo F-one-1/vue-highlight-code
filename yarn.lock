@@ -598,10 +598,10 @@ vite@^2.9.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue-highlight-code@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.npmmirror.com/vue-highlight-code/-/vue-highlight-code-0.1.8.tgz#8123ea4d4484be61ff0eb66a4fef531a9613192c"
-  integrity sha512-d7jVus77F6dGYT8T16BdALNUMM8Iuzm5dfvi2nAGuVM0lNJkmRPlSNdz+hfIJGsyO8bQJFJfZ1zpjqcxdRQWWA==
+vue-highlight-code@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.npmjs.org/vue-highlight-code/-/vue-highlight-code-0.1.9.tgz#3c3b48a5850af5639936175af8a46a26150ffbcd"
+  integrity sha512-/d53dAMexyICYPWrY4KDdwj86cisPNTedNeri4Qmc2TxAjNejsUR/Cj+oZj6dHcxX2SZ0WMd56QZhdBVE85Dfw==
   dependencies:
     highlight.js "^11.5.1"
     vue "^3.2.25"

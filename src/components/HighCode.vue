@@ -58,6 +58,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  borderRadius: {
+    type: String,
+    default: '12px',
+  },
 })
 const langName = props.langName || props.lang
 const font_size = props.fontSize
@@ -83,7 +87,7 @@ const vHighlight = {
   //   hljs.highlightElement(el)
   // },
 }
-const border_radius = '12px'
+const border_radius = props.borderRadius
 const withoutHeader = true
 
 let arr = ref([])
@@ -108,7 +112,7 @@ nextTick(() => {
     :style="{
       width: props.width,
       height: props.height,
-      borderRadius: '10px',
+      borderRadius: props.borderRadius,
       zIndex: '700',
       maxWidth: props.maxwidth,
       // minWidth: '540px',
@@ -128,10 +132,10 @@ nextTick(() => {
       class="code_area"
       ref="codeArea"
       :style="{
-        borderBottomLeftRadius: border_radius,
-        borderBottomRightRadius: border_radius,
-        borderTopLeftRadius: withoutHeader == true ? border_radius : 0,
-        borderTopRightRadius: withoutHeader == true ? border_radius : 0,
+        borderBottomLeftRadius: props.borderRadius,
+        borderBottomRightRadius: props.borderRadius,
+        borderTopLeftRadius: withoutHeader == true ? props.borderRadius : 0,
+        borderTopRightRadius: withoutHeader == true ? props.borderRadius : 0,
       }"
       :class="{ srollbar_style: props.scrollStyleBool === true }"
     >
@@ -175,7 +179,7 @@ nextTick(() => {
     padding-top: 0px;
     padding-left: 24px;
     overflow: overlay;
-    border-radius: 5px;
+    // border-radius: 5px;
     display: flex;
     &_link {
       position: absolute;
