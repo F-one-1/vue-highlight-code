@@ -66,4 +66,6 @@ export default {
 | fontSize        | highlight code font-size                        | `Number`  | -                                        |
 | scrollStyleBool | component scroll bar style                      | `Boolean` | `true`                                   |
 | copy            | whether the code can copy                       | `Boolean` | `true`                                   |
+| borderRadius    | component style border_radius                   | `String`  | `10px`                                   |
+
 
