@@ -19,7 +19,7 @@ const light = 'light'
 const vue = 'vue'
 const dark = 'dark'
 const height = '200px'
-const borderRadius = '0px'
+const borderRadius = '10px'
 </script>
 <template>
   <div class="wrapper">
@@ -37,6 +37,8 @@ const borderRadius = '0px'
       :lang="vue"
       :codeLines="true"
       :borderRadius="borderRadius"
+      :nameShow="false"
+      :copy="false"
     ></HighCode>
   </div>
 </template>

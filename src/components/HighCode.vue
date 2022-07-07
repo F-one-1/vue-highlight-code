@@ -132,6 +132,8 @@ nextTick(() => {
       class="code_area"
       ref="codeArea"
       :style="{
+        paddingBottom: nameShow === true && copy === true ? '20px' : '14px',
+        paddingTop: nameShow === true && copy === true ? 0 : '14px',
         borderBottomLeftRadius: props.borderRadius,
         borderBottomRightRadius: props.borderRadius,
         borderTopLeftRadius: withoutHeader == true ? props.borderRadius : 0,
@@ -179,6 +181,7 @@ nextTick(() => {
     padding-top: 0px;
     padding-left: 24px;
     overflow: overlay;
+    margin: auto 0;
     // border-radius: 5px;
     display: flex;
     &_link {
@@ -204,7 +207,8 @@ nextTick(() => {
     position: relative;
     display: flex;
     justify-content: flex-start;
-    height: 30px;
+    // height: 30px;
+
     width: 100%;
   }
   pre code {
