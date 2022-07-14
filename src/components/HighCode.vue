@@ -1,7 +1,7 @@
 <script setup>
 import hljs from 'highlight.js'
 import CopyCode from './CopyCode.vue'
-import { computed, nextTick, ref } from 'vue'
+import { computed, nextTick, onMounted, onUpdated, ref } from 'vue'
 import TypeShow from './TypeShow.vue'
 const props = defineProps({
   copy: {
@@ -31,7 +31,7 @@ const props = defineProps({
   },
   height: {
     type: String,
-    default: '',
+    default: '240px',
   },
   maxWidth: {
     type: String,
@@ -51,8 +51,8 @@ const props = defineProps({
     default: '',
   },
   fontSize: {
-    type: Number,
-    default: 18,
+    type: String,
+    default: '18px',
   },
   codeLines: {
     type: Boolean,
@@ -62,44 +62,94 @@ const props = defineProps({
     type: String,
     default: '12px',
   },
+  readOnly: {
+    type: Boolean,
+    default: false,
+  },
+  autofocus: {
+    type: Boolean,
+    default: false,
+  },
 })
 const langName = props.langName || props.lang
 const font_size = props.fontSize
 const languageClass = 'hljs language-' + props.lang
 // const theme = 'dark'
 const vHighlight = {
-  bind(el, binding) {
-    el.textContent = binding.value
-    hljs.highlightElement(el)
-  },
-  componentUpdated(el, binding) {
-    el.textContent = binding.value
-    hljs.highlightElement(el)
-  },
-  created(el, binding) {
-    // console.log(el, binding, '111')
-    el.textContent = binding.value
-    hljs.highlightElement(el)
-  },
-  // updated(el, binding) {
-  //   // console.log(el, binding, '222')
+  // bind(el, binding) {
   //   el.textContent = binding.value
   //   hljs.highlightElement(el)
   // },
+  // componentUpdated(el, binding) {
+  //   el.textContent = binding.value
+  //   hljs.highlightElement(el)
+  // },
+  created(el, binding) {
+    el.textContent = binding.value
+    hljs.highlightElement(el)
+  },
+  updated(el, binding) {
+    el.textContent = binding.value
+    hljs.highlightElement(el)
+  },
 }
+const textarea = ref(null)
+const resize = () => {
+  const resize = new ResizeObserver((entries) => {
+    for (let entry of entries) {
+      const obj = entry.contentRect
+      containerWidth.value = obj.width + 40 // 40 is the padding
+    }
+  })
+  // only the textarea is rendered the listener will run
+  if (textarea.value) {
+    resize.observe(textarea.value)
+  }
+}
+const containerWidth = ref(0)
 const border_radius = props.borderRadius
 const withoutHeader = true
-
+const modelValue = ref(props.codeValue)
 let arr = ref([])
-
+const tab = () => {
+  document.execCommand('insertText', false, '    ')
+}
 const code = ref(null)
+const textHeight = ref('0px')
 nextTick(() => {
   const preCodeHeightDemo = code.value.offsetHeight
+  // console.log(preCodeHeightDemo, 'pre')
+  if (props.nameShow === true) {
+    textHeight.value = String(preCodeHeightDemo - 30) + 'px'
+  } else {
+    textHeight.value = String(preCodeHeightDemo) + 'px'
+  }
+
   const count = Math.ceil(preCodeHeightDemo / 24)
   for (let i = 1; i <= count; i++) {
     arr.value.push(i)
   }
   // console.log(arr,'arr')
+})
+
+const calcContainerWidth = (event) => {
+  containerWidth.value = event.target.clientWidth
+}
+const top = ref(0)
+const left = ref(0)
+const scroll = (event) => {
+  top.value = -event.target.scrollTop
+  left.value = -event.target.scrollLeft
+}
+onMounted(() => {
+  resize()
+})
+const HighValue = computed(() => {
+  return modelValue.value
+})
+onUpdated(() => {
+  // console.log(props.codeValue)
+  // console.log(HighValue.value)
 })
 </script>
 <template>
@@ -132,16 +182,19 @@ nextTick(() => {
       class="code_area"
       ref="codeArea"
       :style="{
-        paddingBottom: nameShow === true && copy === true ? '20px' : '14px',
-        paddingTop: nameShow === true && copy === true ? 0 : '14px',
+        // paddingBottom: nameShow === true && copy === true ? '20px' : '14px',
+        // paddingTop: nameShow === true && copy === true ? 0 : '14px',
         borderBottomLeftRadius: props.borderRadius,
         borderBottomRightRadius: props.borderRadius,
         borderTopLeftRadius: withoutHeader == true ? props.borderRadius : 0,
         borderTopRightRadius: withoutHeader == true ? props.borderRadius : 0,
       }"
-      :class="{ srollbar_style: props.scrollStyleBool === true }"
+      :class="{
+        srollbar_style: props.scrollStyleBool === true,
+        change_hight: nameShow === true,
+      }"
     >
-      <div class="code_area_lines" v-if="codeLines">
+      <!-- <div class="code_area_lines" v-if="codeLines">
         <div
           :class="{
             dark: props.theme === 'dark',
@@ -152,13 +205,27 @@ nextTick(() => {
         >
           {{ cur }}
         </div>
-      </div>
+      </div> -->
+      <textarea
+        ref="textarea"
+        :autofocus="autofocus"
+        @keydown.tab.prevent.stop="tab"
+        v-on:scroll="scroll"
+        v-model="modelValue"
+        @input="calcContainerWidth($event)"
+        :style="{
+          fontSize: font_size,
+          height: textHeight,
+          marginTop: nameShow === true && copy === true ? 0 : '14px',
+        }"
+      >
+      </textarea>
       <pre>
       <code
-        v-highlight="props.codeValue"
+        v-highlight="HighValue"
         :class="languageClass"
         ref="code"
-        :style="{ fontSize: font_size }"
+        :style="{ top: top + 'px', left: left + 'px', fontSize: font_size }"
       >
       </code>
       </pre>
@@ -174,18 +241,64 @@ nextTick(() => {
   position: relative;
   text-align: left;
   overflow: hidden;
+  &_header {
+    min-height: 14px;
+    position: relative;
+  }
   &_area {
     position: relative;
     overflow: hidden;
-    padding: 20px;
-    padding-top: 0px;
-    padding-left: 24px;
-    overflow: overlay;
+    // padding: 20px;
+    padding-left: 20px;
+    // overflow: overlay;
     margin: auto 0;
     // border-radius: 5px;
     display: flex;
+    textarea {
+      overflow-y: hidden;
+      box-sizing: border-box;
+      caret-color: rgba(127, 127, 127);
+      -webkit-text-fill-color: transparent;
+      white-space: pre;
+      word-wrap: normal;
+      border: 0;
+      // color: #abb2bf;
+      position: absolute;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: none;
+      resize: none;
+      border: none;
+      outline: none;
+      resize: none;
+      padding: 0px 20px 20px 20px;
+      line-height: 24px;
+      overflow: overlay;
+      font-family: Consolas, Monaco, monospace;
+      &::-webkit-scrollbar-track {
+        background-color: #eee;
+        // border-radius: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(175, 171, 171);
+        // border-radius: 5px;
+      }
+      &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      &::-webkit-scrollbar-corner {
+        background-color: #eee;
+      }
+    }
     &_link {
       position: absolute;
+    }
+    &.change_hight {
+      height: calc(100% - 30px);
     }
     &.srollbar_style::-webkit-scrollbar-track {
       background-color: #eee;
@@ -202,6 +315,13 @@ nextTick(() => {
     &.srollbar_style::-webkit-scrollbar-corner {
       background-color: #eee;
     }
+    pre {
+      position: relative;
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      // margin: 14px 0px 0px 20px;
+    }
   }
   &_header {
     position: relative;
@@ -215,9 +335,17 @@ nextTick(() => {
     // padding: 0px 20px 20px 20px;
     font-family: Consolas, Monaco, monospace;
     line-height: 24px;
-    font-size: 16px;
+    // font-size: 16px;
+    position: relative;
+    overflow-x: visible;
+    border-radius: 0;
+    box-sizing: border-box;
+    display: block;
+    border: none;
+    margin: 0;
   }
 }
+
 .wrapper-content::-webkit-scrollbar-track {
   background-color: #eee;
   border-radius: 5px;

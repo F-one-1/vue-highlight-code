@@ -23,18 +23,11 @@ const borderRadius = '10px'
 </script>
 <template>
   <div class="wrapper">
-    <HighCode
-      class="code"
-      :codeValue="value"
-      :theme="dark"
-      :lang="vue"
-      :maxHeight="height"
-    ></HighCode>
+    <HighCode class="code" :codeValue="value" :theme="dark"></HighCode>
     <HighCode
       class="code"
       :codeValue="value"
       :theme="light"
-      :lang="vue"
       :codeLines="true"
       :borderRadius="borderRadius"
       :nameShow="false"
