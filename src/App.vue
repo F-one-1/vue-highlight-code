@@ -1,7 +1,6 @@
 <script setup>
+import { nextTick, onMounted, ref } from 'vue'
 import HighCode from './components/HighCode.vue'
-// import { HighCode } from 'vue-highlight-code'
-// import 'vue-highlight-code/dist/style.css'
 
 const value = `import { HighCode } from 'vue-highlight-code';
 import 'vue-highlight-code/dist/style.css';
@@ -13,18 +12,26 @@ export default {
 
     }
 }`
-// const demoJS = textloader(import.meta.globEager("./demo.js"))
-// console.log(demoJS,'demoJS')
 const light = 'light'
 const vue = 'vue'
 const dark = 'dark'
 const height = '200px'
 const borderRadius = '10px'
+const H = ref(null)
+onMounted(() => {
+  console.log(H.value.modelValue)
+})
+// setTimeout(() => {
+//   const d = ref(null)
+//   console.dir(d)
+// }, 2000)
 </script>
 <template>
   <div class="wrapper">
-    <HighCode class="code" :codeValue="value" :theme="dark"></HighCode>
+    <div ref="d"></div>
+    <HighCode ref="H" class="code" :codeValue="value" :theme="dark"></HighCode>
     <HighCode
+      ref="High"
       class="code"
       :codeValue="value"
       :theme="light"
@@ -32,6 +39,7 @@ const borderRadius = '10px'
       :borderRadius="borderRadius"
       :nameShow="false"
       :copy="false"
+      :textWrite="true"
     ></HighCode>
   </div>
 </template>

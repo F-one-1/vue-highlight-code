@@ -1,7 +1,14 @@
 <script setup>
 import hljs from 'highlight.js'
 import CopyCode from './CopyCode.vue'
-import { computed, nextTick, onMounted, onUpdated, ref } from 'vue'
+import {
+  computed,
+  nextTick,
+  onMounted,
+  onUpdated,
+  ref,
+  defineExpose,
+} from 'vue'
 import TypeShow from './TypeShow.vue'
 const props = defineProps({
   copy: {
@@ -70,7 +77,13 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  textWrite: {
+    type: Boolean,
+    default: false,
+  },
 })
+const emit = defineEmits(['getCodeValue'])
+
 const langName = props.langName || props.lang
 const font_size = props.fontSize
 const languageClass = 'hljs language-' + props.lang
@@ -147,9 +160,9 @@ onMounted(() => {
 const HighValue = computed(() => {
   return modelValue.value
 })
-onUpdated(() => {
-  // console.log(props.codeValue)
-  // console.log(HighValue.value)
+
+defineExpose({
+  modelValue,
 })
 </script>
 <template>
@@ -172,7 +185,7 @@ onUpdated(() => {
   >
     <div class="code_header">
       <TypeShow v-if="nameShow" :TL="langName"></TypeShow>
-      <CopyCode v-if="copy" :codeValue="props.codeValue"></CopyCode>
+      <CopyCode v-if="copy" :codeValue="modelValue"></CopyCode>
     </div>
     <!-- <div class="code_area">
       <div>1</div>
@@ -207,6 +220,7 @@ onUpdated(() => {
         </div>
       </div> -->
       <textarea
+        v-if="props.textWrite"
         ref="textarea"
         :autofocus="autofocus"
         @keydown.tab.prevent.stop="tab"
@@ -216,7 +230,6 @@ onUpdated(() => {
         :style="{
           fontSize: font_size,
           height: textHeight,
-          marginTop: nameShow === true && copy === true ? 0 : '14px',
         }"
       >
       </textarea>
