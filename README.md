@@ -16,6 +16,7 @@ Import the npm package and only one prop to show highlightCode
   </a>
 </p>
 
+
 ```
 yarn add highlight.js vue-highlight-code
 ```
@@ -55,6 +56,7 @@ export default {
 | prop            | description                                     | type      | default                                  |
 | :-------------- | :---------------------------------------------- | :-------- | :--------------------------------------- |
 | codeValue       | Highlight Code Source                           | `String`  | `''`                                     |
+| textEditor      | CodeText Editor                                 | Boolean   | 'false'                                  |
 | lang            | Highlight Code Type                             | `String`  | `javascript` (such as 'vue','html','css) |
 | theme           | Component Highlight Code theme                  | `String`  | default: `dark`(only ['dark','light'])   |
 | codeLines       | Show Code lines                                 | `Boolean` | `false`                                  |
@@ -68,4 +70,20 @@ export default {
 | copy            | whether the code can copy                       | `Boolean` | `true`                                   |
 | borderRadius    | component style border_radius                   | `String`  | `10px`                                   |
 
+
+
+#### Get real-time editing code content
+
+create ref  in the HighCode component instance get the modelValue 
+
+```vue
+<script setup>
+const H = ref(null)
+onMounted(() => {
+  console.log(H.value.modelValue)
+})
+<script>
+<HighCode ref="H" ></HighCode>
+
+```
 

@@ -1,7 +1,8 @@
 <script setup>
 import { nextTick, onMounted, ref } from 'vue'
+// import { HighCode } from 'vue-highlight-code'
+// import 'vue-highlight-code/dist/style.css'
 import HighCode from './components/HighCode.vue'
-
 const value = `import { HighCode } from 'vue-highlight-code';
 import 'vue-highlight-code/dist/style.css';
 export default {
@@ -39,7 +40,7 @@ onMounted(() => {
       :borderRadius="borderRadius"
       :nameShow="false"
       :copy="false"
-      :textWrite="true"
+      :textEditor="true"
     ></HighCode>
   </div>
 </template>

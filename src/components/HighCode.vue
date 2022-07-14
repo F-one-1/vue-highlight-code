@@ -77,7 +77,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  textWrite: {
+  textEditor: {
     type: Boolean,
     default: false,
   },
@@ -220,7 +220,7 @@ defineExpose({
         </div>
       </div> -->
       <textarea
-        v-if="props.textWrite"
+        v-if="props.textEditor"
         ref="textarea"
         :autofocus="autofocus"
         @keydown.tab.prevent.stop="tab"

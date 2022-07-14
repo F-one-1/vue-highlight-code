@@ -1,7 +1,7 @@
 {
   "name": "vue-highlight-code",
   "private": false,
-  "version": "0.1.11",
+  "version": "0.1.12",
   "license": "MIT",
   "main": "./dist/vue-highlight-code.umd.js",
   "module": "./dist/vue-highlight-code.es.js",
@@ -29,7 +29,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vite": "^2.9.9",
-    "vue-highlight-code": "^0.1.9"
+    "vue-highlight-code": "^0.1.12"
   },
   "repository": {
     "type": "git",
