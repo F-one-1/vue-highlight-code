@@ -1,6 +1,6 @@
-## Highlight Code for Vue.js
+## Highlight Code and Content editor for Vue.js
 
-Import the npm package and only one prop to show highlightCode
+Import the npm package and only one prop to show highlightCode and editor
 
 [![vue 3](https://img.shields.io/badge/vue-3-42b983.svg?style=flat-square)](https://vuejs.org)
 
