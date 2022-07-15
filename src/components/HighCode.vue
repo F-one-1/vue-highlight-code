@@ -81,6 +81,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  spellcheck: {
+    type: Boolean,
+    default: true,
+  },
 })
 const emit = defineEmits(['getCodeValue'])
 
@@ -223,6 +227,7 @@ defineExpose({
         v-if="props.textEditor"
         ref="textarea"
         :autofocus="autofocus"
+        :spellcheck="spellcheck"
         @keydown.tab.prevent.stop="tab"
         v-on:scroll="scroll"
         v-model="modelValue"
