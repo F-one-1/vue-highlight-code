@@ -83,7 +83,7 @@ const props = defineProps({
   },
   spellcheck: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 })
 const emit = defineEmits(['getCodeValue'])
