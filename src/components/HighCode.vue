@@ -91,16 +91,20 @@ const emit = defineEmits(['getCodeValue'])
 const langName = props.langName || props.lang
 const font_size = props.fontSize
 const languageClass = 'hljs language-' + props.lang
-// const theme = 'dark'
+
+const textarea = ref(null)
+const containerWidth = ref(0)
+const border_radius = props.borderRadius
+const withoutHeader = true
+let arr = ref([])
+const code = ref(null)
+const textHeight = ref('0px')
+
+const modelValue = ref(props.codeValue)
+const top = ref(0)
+const left = ref(0)
+
 const vHighlight = {
-  // bind(el, binding) {
-  //   el.textContent = binding.value
-  //   hljs.highlightElement(el)
-  // },
-  // componentUpdated(el, binding) {
-  //   el.textContent = binding.value
-  //   hljs.highlightElement(el)
-  // },
   created(el, binding) {
     el.textContent = binding.value
     hljs.highlightElement(el)
@@ -110,7 +114,7 @@ const vHighlight = {
     hljs.highlightElement(el)
   },
 }
-const textarea = ref(null)
+
 const resize = () => {
   const resize = new ResizeObserver((entries) => {
     for (let entry of entries) {
@@ -123,16 +127,25 @@ const resize = () => {
     resize.observe(textarea.value)
   }
 }
-const containerWidth = ref(0)
-const border_radius = props.borderRadius
-const withoutHeader = true
-const modelValue = ref(props.codeValue)
-let arr = ref([])
+
 const tab = () => {
   document.execCommand('insertText', false, '    ')
 }
-const code = ref(null)
-const textHeight = ref('0px')
+
+const calcContainerWidth = (event) => {
+  containerWidth.value = event.target.clientWidth
+}
+
+const scroll = (event) => {
+  top.value = -event.target.scrollTop
+  left.value = -event.target.scrollLeft
+}
+const HighValue = computed(() => {
+  return modelValue.value
+})
+onMounted(() => {
+  resize()
+})
 nextTick(() => {
   const preCodeHeightDemo = code.value.offsetHeight
   // console.log(preCodeHeightDemo, 'pre')
@@ -146,25 +159,7 @@ nextTick(() => {
   for (let i = 1; i <= count; i++) {
     arr.value.push(i)
   }
-  // console.log(arr,'arr')
 })
-
-const calcContainerWidth = (event) => {
-  containerWidth.value = event.target.clientWidth
-}
-const top = ref(0)
-const left = ref(0)
-const scroll = (event) => {
-  top.value = -event.target.scrollTop
-  left.value = -event.target.scrollLeft
-}
-onMounted(() => {
-  resize()
-})
-const HighValue = computed(() => {
-  return modelValue.value
-})
-
 defineExpose({
   modelValue,
 })
@@ -211,7 +206,7 @@ defineExpose({
         change_hight: nameShow === true,
       }"
     >
-      <!-- <div class="code_area_lines" v-if="codeLines">
+      <div class="code_area_lines" v-if="codeLines">
         <div
           :class="{
             dark: props.theme === 'dark',
@@ -222,7 +217,7 @@ defineExpose({
         >
           {{ cur }}
         </div>
-      </div> -->
+      </div>
       <textarea
         v-if="props.textEditor"
         ref="textarea"

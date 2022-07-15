@@ -22,10 +22,6 @@ const H = ref(null)
 onMounted(() => {
   console.log(H.value.modelValue)
 })
-// setTimeout(() => {
-//   const d = ref(null)
-//   console.dir(d)
-// }, 2000)
 </script>
 <template>
   <div class="wrapper">
@@ -36,7 +32,6 @@ onMounted(() => {
       class="code"
       :codeValue="value"
       :theme="light"
-      :codeLines="true"
       :borderRadius="borderRadius"
       :nameShow="false"
       :copy="false"
