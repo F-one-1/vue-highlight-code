@@ -1,14 +1,7 @@
 <script setup>
 import hljs from 'highlight.js'
 import CopyCode from './CopyCode.vue'
-import {
-  computed,
-  nextTick,
-  onMounted,
-  onUpdated,
-  ref,
-  defineExpose,
-} from 'vue'
+import { computed, nextTick, onMounted, onUpdated, ref, watch } from 'vue'
 import TypeShow from './TypeShow.vue'
 const props = defineProps({
   copy: {
@@ -115,6 +108,13 @@ const vHighlight = {
   },
 }
 
+watch(
+  () => modelValue.value,
+  (value, oldValue) => {
+    // console.log(111)
+    emit('getCodeValue', modelValue.value)
+  }
+)
 const resize = () => {
   const resize = new ResizeObserver((entries) => {
     for (let entry of entries) {

@@ -22,6 +22,9 @@ const H = ref(null)
 onMounted(() => {
   console.log(H.value.modelValue)
 })
+const getCodeValue = (v) => {
+  console.log(v)
+}
 </script>
 <template>
   <div class="wrapper">
@@ -36,6 +39,7 @@ onMounted(() => {
       :nameShow="false"
       :copy="false"
       :textEditor="true"
+      @getCodeValue="getCodeValue"
     ></HighCode>
   </div>
 </template>
