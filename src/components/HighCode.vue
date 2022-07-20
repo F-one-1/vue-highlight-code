@@ -289,7 +289,7 @@ defineExpose({
       outline: none;
       resize: none;
       padding: 0px 20px 20px 20px;
-      line-height: 24px;
+      line-height: 1.3;
       overflow: overlay;
       font-family: Consolas, Monaco, monospace;
       &::-webkit-scrollbar-track {
@@ -348,7 +348,7 @@ defineExpose({
   pre code {
     // padding: 0px 20px 20px 20px;
     font-family: Consolas, Monaco, monospace;
-    line-height: 24px;
+    line-height: 1.3;
     // font-size: 16px;
     position: relative;
     overflow-x: visible;

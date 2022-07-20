@@ -33,6 +33,7 @@ const vue = 'vue'
 const dark = 'dark'
 const height = '200px'
 const borderRadius = '10px'
+const fontSize = '12px'
 const H = ref(null)
 onMounted(() => {
   console.log(H.value.modelValue)
@@ -44,7 +45,13 @@ const getCodeValue = (v) => {
 <template>
   <div class="wrapper">
     <div ref="d"></div>
-    <HighCode ref="H" class="code" :codeValue="value" :theme="dark"></HighCode>
+    <HighCode
+      ref="H"
+      class="code"
+      :codeValue="value"
+      :theme="dark"
+      :fontSize="fontSize"
+    ></HighCode>
     <HighCode
       ref="High"
       class="code"
