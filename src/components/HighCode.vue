@@ -200,6 +200,7 @@ defineExpose({
         borderBottomRightRadius: props.borderRadius,
         borderTopLeftRadius: withoutHeader == true ? props.borderRadius : 0,
         borderTopRightRadius: withoutHeader == true ? props.borderRadius : 0,
+        height: props.height,
       }"
       :class="{
         srollbar_style: props.scrollStyleBool === true,
@@ -229,7 +230,7 @@ defineExpose({
         @input="calcContainerWidth($event)"
         :style="{
           fontSize: font_size,
-          height: textHeight,
+          height: props.height,
         }"
       >
       </textarea>

@@ -1,17 +1,32 @@
 <script setup>
 import { nextTick, onMounted, ref } from 'vue'
-// import { HighCode } from 'vue-highlight-code'
+// import HighCode from 'vue-highlight-code'
 // import 'vue-highlight-code/dist/style.css'
 import HighCode from './components/HighCode.vue'
-const value = `import { HighCode } from 'vue-highlight-code';
-import 'vue-highlight-code/dist/style.css';
-export default {
-    components: {
-      HighCode
-    },
-    data(){
-
-    }
+// import { HighCode } from 'vue-highlight-code'
+// import 'vue-highlight-code/dist/style.css'
+const value = `body {
+  padding: 0;
+  margin: 0;
+}
+.App {
+  text-align: center;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.App-link {
+  color: #61dafb;
+}
+button {
+  font-size: calc(10px + 2vmin);
 }`
 const light = 'light'
 const vue = 'vue'
@@ -58,6 +73,6 @@ const getCodeValue = (v) => {
   flex-direction: column;
 }
 .code {
-  margin: 20px;
+  /* margin: 20px; */
 }
 </style>
