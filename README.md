@@ -71,6 +71,10 @@ export default {
 | copy            | whether the code can copy                       | `Boolean` | `true`                                   |
 | borderRadius    | component style border_radius                   | `String`  | `10px`                                   |
 
+#### emit
+| emit         | description                                                | type       | parameter                              |
+| :----------- | :--------------------------------------------------------- | :--------- | :------------------------------------- |
+| getCodeValue | The emit method is triggered when the edit content changes | `Function` | `function(contentValue: String): void` |
 
 
 #### Get real-time editing code content
