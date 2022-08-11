@@ -20,11 +20,10 @@ Import the npm package and only one prop to show highlightCode and editor
 ```
 yarn add highlight.js vue-highlight-code
 ```
-## awesome use
-[bitSandBox-demo](https://f-one-1.github.io/bitSandBox/)  (personal study project,about SandBox and editor)
-## live demo
 
-[stackblitz](https://stackblitz.com/edit/github-thlmm2?file=src%2FApp.vue)
+## live demo
+[bitSandBox-demo](https://f-one-1.github.io/bitSandBox/)  (personal study project,about SandBox and editor)
+[stackblitz](https://stackblitz.com/github/F-one-1/vue-highlight-code)
 
 ![NXGUK Z% L$P EQCLJZ6TZY](https://user-images.githubusercontent.com/68687740/169360419-e2538e66-f45e-4e5b-82d5-144f280587ca.png)
 

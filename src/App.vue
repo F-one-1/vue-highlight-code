@@ -5,35 +5,39 @@ import { nextTick, onMounted, ref } from 'vue'
 import HighCode from './components/HighCode.vue'
 // import { HighCode } from 'vue-highlight-code'
 // import 'vue-highlight-code/dist/style.css'
-const value = `body {
-  padding: 0;
-  margin: 0;
-}
-.App {
+const value = `import { HighCode } from 'vue-highlight-code';
+import 'vue-highlight-code/dist/style.css';
+export default {
+    components: {
+      HighCode
+    },
+    data(){
+
+    }
+}`
+const value2 = `#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-.App-link {
-  color: #61dafb;
+.code {
+  /* margin: 20px; */
 }
-button {
-  font-size: calc(10px + 2vmin);
-}`
+`
 const light = 'light'
 const vue = 'vue'
 const dark = 'dark'
-const height = '200px'
 const borderRadius = '10px'
 const fontSize = '12px'
+const height = '300px'
+const width = '580px'
 const H = ref(null)
 onMounted(() => {
   console.log(H.value.modelValue)
@@ -41,6 +45,8 @@ onMounted(() => {
 const getCodeValue = (v) => {
   console.log(v)
 }
+const booltrue = true
+const boolfalse = false
 </script>
 <template>
   <div class="wrapper">
@@ -51,17 +57,23 @@ const getCodeValue = (v) => {
       :codeValue="value"
       :theme="dark"
       :fontSize="fontSize"
-    ></HighCode>
-    <HighCode
-      ref="High"
-      class="code"
-      :codeValue="value"
-      :theme="light"
-      :borderRadius="borderRadius"
       :nameShow="false"
       :copy="false"
+      :height="height"
+      :width="width"
       :textEditor="true"
-      @getCodeValue="getCodeValue"
+    ></HighCode>
+    <HighCode
+      ref="H"
+      class="code"
+      :codeValue="value2"
+      :theme="dark"
+      :fontSize="fontSize"
+      :nameShow="false"
+      :copy="false"
+      :height="height"
+      :width="width"
+      :readOnly="boolfalse"
     ></HighCode>
   </div>
 </template>
@@ -80,6 +92,6 @@ const getCodeValue = (v) => {
   flex-direction: column;
 }
 .code {
-  /* margin: 20px; */
+  margin: 20px;
 }
 </style>
