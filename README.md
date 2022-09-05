@@ -22,7 +22,7 @@ yarn add highlight.js vue-highlight-code
 ```
 
 ## live demo
-[bitSandBox-demo](https://f-one-1.github.io/bitSandBox/)  (personal study project,about SandBox and editor)
+[bitSandBox-demo（web-IDE部分模块的简单实现）](https://f-one-1.github.io/bitSandBox/)  
 
 [stackblitz](https://stackblitz.com/github/F-one-1/vue-highlight-code?file=src%2FApp.vue)
 
