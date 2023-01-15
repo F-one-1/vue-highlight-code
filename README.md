@@ -66,7 +66,7 @@ export default {
 | height          | component style height                          | `String`  | ``                                       |
 | maxWidth        | component style max-width                       | `String`  | ``                                       |
 | maxHight        | component style max-height`String`              | `String`  | ``                                       |
-| fontSize        | highlight code font-size                        | `Number`  | -                                        |
+| fontSize        | highlight code font-size                        | `String`  | -                                        |
 | scrollStyleBool | component scroll bar style                      | `Boolean` | `true`                                   |
 | copy            | whether the code can copy                       | `Boolean` | `true`                                   |
 | borderRadius    | component style border_radius                   | `String`  | `10px`                                   |
