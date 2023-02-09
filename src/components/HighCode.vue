@@ -199,8 +199,7 @@ defineExpose({
         borderBottomLeftRadius: props.borderRadius,
         borderBottomRightRadius: props.borderRadius,
         borderTopLeftRadius: withoutHeader == true ? props.borderRadius : 0,
-        borderTopRightRadius: withoutHeader == true ? props.borderRadius : 0,
-        height: props.height,
+        borderTopRightRadius: withoutHeader == true ? props.borderRadius : 0
       }"
       :class="{
         srollbar_style: props.scrollStyleBool === true,
