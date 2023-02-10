@@ -264,7 +264,8 @@ defineExpose({
     // padding: 20px;
     padding-left: 20px;
     // overflow: overlay;
-    margin: auto 0;
+    margin: 0;
+    margin-top: 5px;
     // border-radius: 5px;
     display: flex;
     textarea {
