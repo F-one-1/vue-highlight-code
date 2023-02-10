@@ -1,7 +1,7 @@
 <script setup>
 import hljs from 'highlight.js'
 import CopyCode from './CopyCode.vue'
-import { computed, nextTick, onMounted, onUpdated, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import TypeShow from './TypeShow.vue'
 const props = defineProps({
   copy: {
@@ -183,8 +183,8 @@ defineExpose({
     }"
   >
     <div class="code_header">
-      <TypeShow v-if="nameShow" :TL="langName"></TypeShow>
-      <CopyCode v-if="copy" :codeValue="modelValue"></CopyCode>
+      <TypeShow v-if="nameShow" :TL="langName"/>
+      <CopyCode v-if="copy" :codeValue="modelValue"/>
     </div>
     <!-- <div class="code_area">
       <div>1</div>
@@ -199,8 +199,7 @@ defineExpose({
         borderBottomLeftRadius: props.borderRadius,
         borderBottomRightRadius: props.borderRadius,
         borderTopLeftRadius: withoutHeader == true ? props.borderRadius : 0,
-        borderTopRightRadius: withoutHeader == true ? props.borderRadius : 0,
-        height: props.height,
+        borderTopRightRadius: withoutHeader == true ? props.borderRadius : 0
       }"
       :class="{
         srollbar_style: props.scrollStyleBool === true,

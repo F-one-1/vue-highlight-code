@@ -13,7 +13,7 @@ const props = defineProps({
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .TL {
   display: flex;
   align-items: center;
