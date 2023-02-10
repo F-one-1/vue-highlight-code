@@ -58,7 +58,7 @@ const getContent = () => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .cb {
   // display: flex;
   position: absolute;
@@ -68,6 +68,7 @@ const getContent = () => {
   height: 30px;
   width: 80px;
   // float: right;
+  top: 0px;
   right: 0px;
   // justify-content: flex-end;
   &:hover &_tooltip {
